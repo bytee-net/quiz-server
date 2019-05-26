@@ -1,0 +1,18 @@
+language: node_js
+
+services:
+  - mongodb
+
+cache:
+  npm: true
+  directories:
+  - node_modules
+
+before_script:
+  - until nc -z localhost 27017 ; do echo Waiting for MongoDB; sleep 1; done
+  - cp config.sample.js config.js
+
+scrpt:
+  - npm start &
+  - until nc -z localhost 3000 ; do echo Waiting for MongoDB; sleep 1; done
+  - npm test
