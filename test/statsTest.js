@@ -85,8 +85,6 @@ describe('POST /stats', () => {
     result.statusCode.should.equal(200);
     result.body.should.be.a('object');
 
-    console.log(result.body);
-
     result.body.msg.should.be.a('string');
     result.body.msg.should.equal('Statistics submitted.');
   });

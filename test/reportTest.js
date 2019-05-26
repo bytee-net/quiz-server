@@ -49,8 +49,6 @@ describe('POST /report', () => {
     result.statusCode.should.equal(200);
     result.body.should.be.a('object');
 
-    console.log(result.body);
-
     // We should get an id
     result.body._id.should.be.a('string');
 
