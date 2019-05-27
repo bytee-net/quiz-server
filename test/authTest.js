@@ -3,9 +3,6 @@ const helper = require('./base');
 const api = helper.api;
 const path = helper.config.prefix;
 
-// key for testing
-const apiKey = 'secure';
-
 /**
  * Test suite for /stats
  */
@@ -27,7 +24,7 @@ describe('Auth tests', () => {
       .get(path + '/questions')
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
-      .set({'api-key': apiKey})
+      .set({'api-key': helper.config.apiKey})
       .send();
 
     result.type.should.equal('application/json');

@@ -13,7 +13,7 @@ router.post('/', async (req, res, next) => {
 
   try {
     await suggestion.validate();
-    let newSuggestion = await suggestion.save();
+    const newSuggestion = await suggestion.save();
 
     res.status(200).json(newSuggestion);
   } catch (err) {
