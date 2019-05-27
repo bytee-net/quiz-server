@@ -2,18 +2,20 @@ const helper = require('./base');
 
 // Supertest API Wrapper
 const api = helper.api;
-const path = helper.config.prefix + '/categories';
+const path = helper.config.prefix + '/tags';
 
 /**
- * Test suite for /categories
+ * Test suite for /tags
  */
-describe('Tests for /categories', () => {
+describe('Tests for /tags', () => {
   it('Should return an array', async () => {
     let result = await api
       .get(path)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .send();
+
+    console.log(result.body);
 
     result.type.should.equal('application/json');
     result.statusCode.should.equal(200);

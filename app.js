@@ -10,6 +10,8 @@ const mongoHelper = require('./helpers/MongoHelper');
 
 const indexRouter = require('./routes/index');
 const questionRoute = require('./routes/questions');
+const categoryRoute = require('./routes/categories');
+const tagsRoute = require('./routes/tags');
 const reportRoute = require('./routes/report');
 const suggestRoute = require('./routes/suggest');
 const statsRoute = require('./routes/stats');
@@ -34,6 +36,8 @@ app.use(apiKeyAuth);
 app.use('/', indexRouter);
 app.use('/questions', questionRoute);
 app.use('/questions/:category', questionRoute);
+app.use('/categories', categoryRoute);
+app.use('/tags', tagsRoute);
 app.use('/report', reportRoute);
 app.use('/suggest', suggestRoute);
 app.use('/stats', statsRoute);

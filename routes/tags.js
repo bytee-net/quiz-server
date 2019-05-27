@@ -3,7 +3,7 @@ const router = express.Router();
 
 const QuestionModel = require('../models/question');
 
-/* GET distinct categories. */
+/* GET tags categories. */
 router.get('/', async (req, res, next) => {
   let filter = {};
 
@@ -12,9 +12,9 @@ router.get('/', async (req, res, next) => {
     filter.published = true;
   }
 
-  const categories = await QuestionModel.distinct('category').exec();
+  const tags = await QuestionModel.distinct('tags').exec();
 
-  res.json(categories);
+  res.json(tags);
 });
 
 module.exports = router;

@@ -25,7 +25,7 @@ const QuestionSchema = new mongoose.Schema({
   answers: [
     {content: String, explanation: String},
   ],
-  resolution: [mongoose.Schema.Types.Mixed],
+  resolution: mongoose.Schema.Types.Mixed,
   explanation: String,
   created: Date,
   updated: {
