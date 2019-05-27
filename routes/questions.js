@@ -31,8 +31,6 @@ router.post('/', async (req, res, next) => {
     return res.status(401).json('Unauthorized access');
   }
 
-  console.log(req.body);
-
   if (!req.body.length) {
     return res.status(405).json('Invalid input');
   }

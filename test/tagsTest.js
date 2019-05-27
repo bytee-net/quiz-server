@@ -15,8 +15,6 @@ describe('Tests for /tags', () => {
       .set('Accept', 'application/json')
       .send();
 
-    console.log(result.body);
-
     result.type.should.equal('application/json');
     result.statusCode.should.equal(200);
     result.body.should.be.a('array');
