@@ -7,10 +7,12 @@ const QuestionModel = require('../models/question');
 router.get(['/', '/:category'], async (req, res, next) => {
   const category = req.params.category;
 
-  // Only published questions
-  let filter = {
-    published: true,
-  };
+  let filter = {};
+
+  // Apply published filter for requests
+  if (!req.authenticated) {
+    filter.published = true;
+  }
 
   if (category) {
     filter.category = category;

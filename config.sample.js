@@ -6,7 +6,10 @@ const config = {
   mongodb_user: '',
   mongodb_password: '',
   mongodb_auth_mechanism: 'DEFAULT',
-  mongodb_db: 'quiz'
+  mongodb_db: 'quiz',
+
+  // Key for administration
+  adminApiKey: 'secure',
 };
 
 module.exports = config;

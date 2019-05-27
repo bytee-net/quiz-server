@@ -1,11 +1,14 @@
-/**
- * Helper for MongoDb
- * @type {{}}
- */
-
 const config = require('../config.js');
 
+/**
+ * Helper for Mongodb
+ * @type {{getUrl(): *}}
+ */
 const MongoHelper = {
+  /**
+   * Get the URL for mongodb
+   * @returns {string} the URL from the config
+   */
   getUrl() {
     let url = 'mongodb://';
 
@@ -21,7 +24,7 @@ const MongoHelper = {
     }
 
     return url;
-  }
+  },
 };
 
 module.exports = MongoHelper;
