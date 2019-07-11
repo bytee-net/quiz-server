@@ -11,7 +11,7 @@ const apiKeyAuth = (req, res, next) => {
   const apiKey = req.headers['api-key'];
 
   // Check key
-  if (apiKey && apiKey !== config.adminApiKey) {
+  if (apiKey && apiKey !== config.admin_api_key) {
     return res.status(403).json('Wrong API Key');
   }
 

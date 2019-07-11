@@ -1,30 +1,30 @@
 const config = require('../config.js');
+const mailgun = config.mailgun_api_key ? require('mailgun-js')({apiKey: config.mailgun_api_key, domain: config.mailgun_domain}) : '';
 
 /**
- * Helper for Mongodb
- * @type {{getUrl(): *}}
+ * Helper for Mailgun Mail sending
  */
-const MongoHelper = {
-  /**
-   * Get the URL for mongodb
-   * @returns {string} the URL from the config
-   */
-  getUrl() {
-    let url = 'mongodb://';
+const MailHelper = {
 
-    if (config.mongodb_user) {
-      url += `${encodeURIComponent(config.mongodb_user)}:${encodeURIComponent(config.mongodb_password)}@`;
+  notifyAdmin(subject, text) {
+    let data = {
+      from: config.mailgun_from,
+      to: config.admin_email,
+      subject: subject,
+      text: text
+    };
+
+    if (!mailgun) {
+      console.log('Mailgun support is disabled (No Mailgun API key)');
+      console.log('Mail body: ' + JSON.stringify(data));
+
+      return;
     }
 
-    url += `${config.mongodb_host}/${config.mongodb_db}`;
-
-    // Only needed if we got credentials
-    if (config.mongodb_user) {
-      url += `${config.mongodb_auth_mechanism}`;
-    }
-
-    return url;
+    mailgun.messages().send(data, function (error, body) {
+      console.log(body);
+    })
   },
 };
 
-module.exports = MongoHelper;
+module.exports = MailHelper;

@@ -9,7 +9,13 @@ const config = {
   mongodb_db: 'quiz',
 
   // Key for administration
-  adminApiKey: 'secure',
+  admin_api_key: 'secure',
+  admin_email: 'quiz@bytee.net',
+
+  // Mail sending with mailgun.com
+  mailgun_api_key: '',
+  mailgun_domain: '',
+  mailgun_from: 'Bytee <quiz@bytee.net>',
 };
 
 module.exports = config;

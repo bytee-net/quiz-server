@@ -15,6 +15,7 @@ const QuestionSchema = new mongoose.Schema({
     required: [true, 'Type of Question is required'],
   },
   email: String,
+  comment: String,
   tags: [[String]],
   code_block: String,
   difficulty: {

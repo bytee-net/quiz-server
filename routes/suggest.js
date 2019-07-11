@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+const mailHelper = require('../helpers/MailHelper');
 const QuestionModel = require('../models/question');
 
 /* POST suggest listing. */
@@ -14,6 +15,9 @@ router.post('/', async (req, res, next) => {
   try {
     await suggestion.validate();
     const newSuggestion = await suggestion.save();
+
+    // Simple admin notification
+    mailHelper.notifyAdmin('New suggestion for Quiz', JSON.stringify(newSuggestion));
 
     res.status(200).json(newSuggestion);
   } catch (err) {
