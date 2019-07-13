@@ -39,6 +39,25 @@ describe('Tests for /questions', () => {
     });
   });
 
+  it('Works with tags', async () => {
+    let tags = ['Regex' , 'samba'];
+
+    let result = await api
+      .get(path + '/tags/' + tags.join(','))
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json')
+      .send();
+
+    result.type.should.equal('application/json');
+    result.statusCode.should.equal(200);
+    result.body.should.be.a('array');
+
+    // Only returns questions with one of the tags (or both)
+    result.body.forEach((item) => {
+      tags.should.to.be.containingAnyOf(item.tags[0]);
+    });
+  });
+
   it('Should only return published questions.', async () => {
     let result = await api
       .get(path)

@@ -1,4 +1,8 @@
 const config = require('./config');
+const assertArrays = require('chai-arrays');
+const chai = require('chai');
+
+chai.use(assertArrays);
 const should = require('chai').should();
 const supertest = require('supertest');
 
