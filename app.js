@@ -36,6 +36,7 @@ app.use(apiKeyAuth);
 app.use('/', indexRouter);
 app.use('/questions', questionRoute);
 app.use('/questions/:category', questionRoute);
+app.use('/questions/tags/:tags', questionRoute);
 app.use('/categories', categoryRoute);
 app.use('/tags', tagsRoute);
 app.use('/report', reportRoute);

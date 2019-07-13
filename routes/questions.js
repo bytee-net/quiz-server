@@ -4,8 +4,11 @@ const router = express.Router();
 const QuestionModel = require('../models/question');
 
 /* GET questions listing. */
-router.get(['/', '/:category'], async (req, res, next) => {
+router.get(['/', '/:category', '/tags/:tags'], async (req, res, next) => {
   const category = req.params.category;
+  let tags = req.params.tags;
+
+  console.log(req.params);
 
   let filter = {};
 
@@ -16,6 +19,18 @@ router.get(['/', '/:category'], async (req, res, next) => {
 
   if (category) {
     filter.category = category;
+  }
+
+  if (tags) {
+    tags = tags.split(',');
+
+    if (tags.length > 1) {
+      filter.$or = [];
+
+      tags.forEach((item) => {
+        filter.$or.push({tags: [item.trim()]});
+      });
+    }
   }
 
   const questions = await QuestionModel.find(filter).exec();
