@@ -7,6 +7,7 @@ const QuestionModel = require('../models/question');
 router.get('/', async (req, res, next) => {
   const tags = await QuestionModel.aggregate(
     [
+      {$match: {"published": true}},
       {$group: {"_id": "$tags", "count": {$sum: 1}}},
       {$unwind: '$_id'},
       {$unwind: '$_id'},

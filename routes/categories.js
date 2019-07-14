@@ -9,6 +9,7 @@ router.get('/', async (req, res, next) => {
 
   const categories = await QuestionModel.aggregate(
     [
+      {$match: {"published": true}},
       {$group: {"_id": "$category", "count": {$sum: 1}}},
     ],
   );

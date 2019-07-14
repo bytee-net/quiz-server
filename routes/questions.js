@@ -30,8 +30,12 @@ router.get(['/', '/:category', '/tags/:tags'], async (req, res, next) => {
       tags.forEach((item) => {
         filter.$or.push({tags: [item.trim()]});
       });
+    } else {
+      filter.tags = tags;
     }
   }
+
+  console.log(filter);
 
   const questions = await QuestionModel.find(filter).exec();
 

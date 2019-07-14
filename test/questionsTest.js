@@ -36,6 +36,7 @@ describe('Tests for /questions', () => {
     // Only returns questions in the category
     result.body.forEach((item) => {
       item.category.should.equal(category);
+      item.published.should.be = true;
     });
   });
 
@@ -55,6 +56,7 @@ describe('Tests for /questions', () => {
     // Only returns questions with one of the tags (or both)
     result.body.forEach((item) => {
       tags.should.to.be.containingAnyOf(item.tags[0]);
+      item.published.should.be = true;
     });
   });
 
