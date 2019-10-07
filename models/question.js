@@ -16,7 +16,7 @@ const QuestionSchema = new mongoose.Schema({
   },
   email: String,
   comment: String,
-  tags: [[String]],
+  tags: [String],
   code_block: String,
   difficulty: {
     type: Number,

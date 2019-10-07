@@ -8,8 +8,6 @@ router.get(['/', '/:category', '/tags/:tags'], async (req, res, next) => {
   const category = req.params.category;
   let tags = req.params.tags;
 
-  console.log(req.params);
-
   let filter = {};
 
   // Apply published filter for requests
@@ -34,8 +32,6 @@ router.get(['/', '/:category', '/tags/:tags'], async (req, res, next) => {
       filter.tags = tags;
     }
   }
-
-  console.log(filter);
 
   const questions = await QuestionModel.find(filter).exec();
 
