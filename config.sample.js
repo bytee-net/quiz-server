@@ -1,5 +1,5 @@
 /**
- * Rename to config.js and adjust
+ * Rename to config.js and adjust it
  */
 const config = {
   mongodb_host: 'localhost',
